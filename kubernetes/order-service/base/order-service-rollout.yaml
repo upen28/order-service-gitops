@@ -11,8 +11,17 @@ spec:
          maxSurge: 25%
          maxUnavailable: 0
          steps:
-         -  setWeight: 10
-         -  pause: {}
+            - setWeight: 20
+            - pause: {}
+            - setWeight: 40
+            - pause:
+                 duration: 15s
+            - setWeight: 60
+            - pause:
+                 duration: 15s
+            - setWeight: 80
+            - pause:
+                 duration: 15s
    selector:
       matchLabels:
          app: order-service
@@ -23,39 +32,39 @@ spec:
          annotations:
             prometheus.io/scrape: "true"
             prometheus.io/path: /actuator/prometheus
-            prometheus.io/port: '9002'
+            prometheus.io/port: "9002"
       spec:
          containers:
-         -  name: order-service-container
-            image: ghcr.io/upen28/polar-bookshop/order-service:latest
-            imagePullPolicy: Always
-            ports:
-            -  containerPort: 9002
-            livenessProbe:
-               httpGet:
-                  path: /actuator/health/liveness
-                  port: 9002
-               initialDelaySeconds: 15
-               periodSeconds: 30
-            readinessProbe:
-               httpGet:
-                  path: /actuator/health/readiness
-                  port: 9002
-               initialDelaySeconds: 15
-               periodSeconds: 30
-            volumeMounts:
-            -  name: order-secrets-volume
-               mountPath: /workspace/secrets/postgres
-            -  name: order-configmap-volume
-               mountPath: /workspace/config
+            - name: order-service-container
+              image: ghcr.io/upen28/polar-bookshop/order-service:latest
+              imagePullPolicy: Always
+              ports:
+                 - containerPort: 9002
+              livenessProbe:
+                 httpGet:
+                    path: /actuator/health/liveness
+                    port: 9002
+                 initialDelaySeconds: 15
+                 periodSeconds: 30
+              readinessProbe:
+                 httpGet:
+                    path: /actuator/health/readiness
+                    port: 9002
+                 initialDelaySeconds: 15
+                 periodSeconds: 30
+              volumeMounts:
+                 - name: order-secrets-volume
+                   mountPath: /workspace/secrets/postgres
+                 - name: order-configmap-volume
+                   mountPath: /workspace/config
          volumes:
-         -  name: order-secrets-volume
-            secret:
-               secretName: order-secrets
-         -  name: order-configmap-volume
-            configMap:
-               name: order-configmap
----               
+            - name: order-secrets-volume
+              secret:
+                 secretName: order-secrets
+            - name: order-configmap-volume
+              configMap:
+                 name: order-configmap
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -66,6 +75,6 @@ spec:
    selector:
       app: order-service
    ports:
-   -  protocol: TCP
-      port: 80
-      targetPort: 9002
+      - protocol: TCP
+        port: 80
+        targetPort: 9002
