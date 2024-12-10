@@ -18,7 +18,6 @@ spec:
             - setWeight: 60
             - pause: {duration: 60s}
             - setWeight: 80
-            - pause: {duration: 60s}
    selector:
       matchLabels:
          app: order-service
