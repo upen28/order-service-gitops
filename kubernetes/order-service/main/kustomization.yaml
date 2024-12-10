@@ -40,7 +40,7 @@ patches:
       metadata:
        name: order-service-rollout
       spec:
-        replicas: 5
+        replicas: 3
 
 images:
 - name: ghcr.io/upen28/polar-bookshop/order-service
