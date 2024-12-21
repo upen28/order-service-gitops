@@ -45,7 +45,7 @@ patches:
 images:
 - name: ghcr.io/upen28/polar-bookshop/order-service
   newName: ghcr.io/upen28/polar-bookshop/order-service/main
-  newTag: 07815294f048f4eb3a7e812eb7db9ba5def54ef3
+  newTag: 6f326642a5a17e945642697c59ce7c2e04f73736
 
 configMapGenerator:
   - name: order-configmap
