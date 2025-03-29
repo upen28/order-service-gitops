@@ -10,7 +10,7 @@ openapi:
 resources:
 - ../base
 
-namespace: polarbook-production
+namespace: polarbookshop-production
 
 patches:
   - patch: |-
