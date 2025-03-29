@@ -31,7 +31,7 @@ patches:
                   - name: OTEL_SERVICE_NAME
                     value: order-service           
                   - name: OTEL_EXPORTER_OTLP_ENDPOINT
-                    value: http://tempo.polarbook-monitoring.svc.cluster.local:4318
+                    value: http://tempo.polarbookshop-production-monitoring.svc.cluster.local:4318
                   - name: OTEL_METRICS_EXPORTER
                     value: none
   - patch: |-

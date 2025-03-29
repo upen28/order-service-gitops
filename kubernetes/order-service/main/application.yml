@@ -1,6 +1,6 @@
 spring:
    r2dbc:
-      url: r2dbc:postgresql://my-release-postgresql.default.svc.cluster.local:5432/polardb_order
+      url: r2dbc:postgresql://postgres-db-postgresql.polarbookshop-production.svc.cluster.local:5432/polardb_order
       username: postgres
    config:
       import: configtree:/workspace/secrets/*/  
