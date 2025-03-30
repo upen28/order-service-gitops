@@ -23,13 +23,13 @@ patches:
               - name: order-service-container
                 env:
                   - name: SPRING_PROFILES_ACTIVE
-                    value: production
+                    value: development
                   - name: JAVA_TOOL_OPTIONS
                     value: -javaagent:/workspace/BOOT-INF/lib/opentelemetry-javaagent-2.6.0.jar
                   - name: OTEL_SERVICE_NAME
                     value: order-service           
                   - name: OTEL_EXPORTER_OTLP_ENDPOINT
-                    value: http://tempo.polarbookshop-production-monitoring.svc.cluster.local:4318
+                    value: http://tempo.polarbookshop-development-monitoring.svc.cluster.local:4318
                   - name: OTEL_METRICS_EXPORTER
                     value: none
   - patch: |-

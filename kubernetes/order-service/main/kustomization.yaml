@@ -10,8 +10,6 @@ openapi:
 resources:
 - ../base
 
-namespace: polarbookshop-production
-
 patches:
   - patch: |-
       apiVersion: argoproj.io/v1alpha1
